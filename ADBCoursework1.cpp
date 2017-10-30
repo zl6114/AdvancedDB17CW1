@@ -24,7 +24,7 @@ std::vector<std::string> findHours(odb::database& db, std::string username) {
 
 	transaction t(db.begin());
 	// t.tracer(odb::stderr_tracer);
-	std::cout << "The Answer for user " << username << "is:    "  << '\n';
+	std::cout << "The Answer for user " << username << "   is:    "  << '\n';
 	auto names = db.query <user> (odb::query<user>::name == username);
 	for (auto & User : names){
 		for(auto & Review : User.reviews_){
