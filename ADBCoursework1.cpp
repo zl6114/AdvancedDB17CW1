@@ -30,6 +30,7 @@ std::vector<std::string> findHours(odb::database& db, std::string username) {
 			auto Business = (Review.load() -> business_id);
 			//std::cout << Business -> name << '\n';
 			for(auto & Hours : (Business -> hours_)){
+					std::cout << "\n\n" << (Hours.load() -> hours) << '\n';
 			 		result.push_back((Hours.load() -> hours));
 			}
 		}
@@ -57,12 +58,14 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 	odb::result<StarCount> R;
 	std::vector<StarCount> result;
 	transaction t(db.begin());
-	//t.tracer(odb::stderr_tracer);
+	t.tracer(odb::stderr_tracer);
 	// Your implementation goes here:
 	R = db.query<StarCount>(Query.str());
 	for (auto i (R.begin ()); i != R.end (); ++i)
   {
 		StarCount temp;
+		std::cout << "\tStar:  " << i -> stars
+							<< "\tCount:  " << i -> count <<  '\n';
 		temp.stars = i -> stars;
 		temp.count = i -> count;
 		result.push_back(temp);
