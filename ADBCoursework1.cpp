@@ -37,6 +37,8 @@ std::vector<std::string> findHours(odb::database& db, std::string username) {
 		}
 	}
 
+	std::cout << '\n';
+
 	t.commit();
 	return result;
 }
