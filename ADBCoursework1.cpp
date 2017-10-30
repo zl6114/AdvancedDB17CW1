@@ -96,7 +96,7 @@ void dropIndex(odb::database& db){
 	// Your implementation goes here:
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
-	db.execute ("DROP INDEX REVIEW.STARS_C");
+	db.execute ("DROP COLUMNSTORE INDEX REVIEW.STARS_C");
 	t.commit();
 	// don't forget to wrap it in a transaction
 	// drop the columnstore index you've created
