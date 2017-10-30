@@ -1,0 +1,4 @@
+/home/zl6114/AdvancedDB17CW1/build/CMakeFiles/edit_cache.dir
+/home/zl6114/AdvancedDB17CW1/build/CMakeFiles/ADBCoursework1.dir
+/home/zl6114/AdvancedDB17CW1/build/CMakeFiles/rebuild_cache.dir
+/home/zl6114/AdvancedDB17CW1/build/CMakeFiles/ODBHeaders.dir
