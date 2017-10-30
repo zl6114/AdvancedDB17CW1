@@ -24,13 +24,14 @@ std::vector<std::string> findHours(odb::database& db, std::string username) {
 
 	transaction t(db.begin());
 	// t.tracer(odb::stderr_tracer);
+	std::cout << "The Answer for user " << username << "is:    "  << '\n';
 	auto names = db.query <user> (odb::query<user>::name == username);
 	for (auto & User : names){
 		for(auto & Review : User.reviews_){
 			auto Business = (Review.load() -> business_id);
 			//std::cout << Business -> name << '\n';
 			for(auto & Hours : (Business -> hours_)){
-					std::cout << "\n\n" << (Hours.load() -> hours) << '\n';
+					std::cout << (Hours.load() -> hours) << '\n';
 			 		result.push_back((Hours.load() -> hours));
 			}
 		}
@@ -64,8 +65,8 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 	for (auto i (R.begin ()); i != R.end (); ++i)
   {
 		StarCount temp;
-		std::cout << "\tStar:  " << i -> stars
-							<< "\tCount:  " << i -> count <<  '\n';
+		// std::cout << "\tStar:  " << i -> stars
+		// 					<< "\tCount:  " << i -> count <<  '\n';
 		temp.stars = i -> stars;
 		temp.count = i -> count;
 		result.push_back(temp);
