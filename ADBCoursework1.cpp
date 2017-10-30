@@ -87,6 +87,7 @@ void createIndex(odb::database& db){
 // DROP INDEX SimpleTable.nc2_simple;
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
+	db.execute ("DROP INDEX STARS_C ON REVIEW");
 	db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
 	t.commit();
 	// create a columnstore index to accelerate your query
