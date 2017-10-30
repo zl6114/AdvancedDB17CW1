@@ -96,7 +96,6 @@ void dropIndex(odb::database& db){
 	// Your implementation goes here:
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
-	DROP INDEX cci_xdimProduct ON xdimProduct
 	db.execute ("DROP INDEX STARS_C ON REVIEW");
 	t.commit();
 	// don't forget to wrap it in a transaction
