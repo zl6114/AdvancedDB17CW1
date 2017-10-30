@@ -87,7 +87,7 @@ void createIndex(odb::database& db){
 // DROP INDEX SimpleTable.nc2_simple;
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
-	db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
+	//db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
 	t.commit();
 	// create a columnstore index to accelerate your query
 }
@@ -96,7 +96,7 @@ void dropIndex(odb::database& db){
 	// Your implementation goes here:
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
-	db.execute ("DROP COLUMNSTORE INDEX REVIEW.STARS_C");
+	//db.execute ("DROP COLUMNSTORE INDEX REVIEW.STARS_C");
 	t.commit();
 	// don't forget to wrap it in a transaction
 	// drop the columnstore index you've created
