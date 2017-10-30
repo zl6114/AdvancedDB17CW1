@@ -48,6 +48,8 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 {
 
 	std::stringstream Query;
+	std::cout << '\n';
+	std::cout << "Here the query of counting the star is : " << '\n';
 	Query << "SELECT REVIEW.STARS AS stars,\nCOUNT(REVIEW.STARS) AS count\n"
 				<< "FROM   REVIEW INNER JOIN BUSINESS "
 				<< "ON REVIEW.business_id = Business.id\n"
@@ -73,6 +75,7 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 		temp.count = i -> count;
 		result.push_back(temp);
   }
+	std::cout << '\n';
 	// Count the stars
 	t.commit();
 	return result;
@@ -91,6 +94,7 @@ void createIndex(odb::database& db){
 
 // DROP INDEX SimpleTable.nc1_simple;
 // DROP INDEX SimpleTable.nc2_simple;
+	std::cout << "Now Creating a columnstore index to accelerate the query" << '\n';
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
 	db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
@@ -100,6 +104,7 @@ void createIndex(odb::database& db){
 
 void dropIndex(odb::database& db){
 	// Your implementation goes here:
+	std::cout << "Now drop the columnstore index thats created" << '\n';
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
 	db.execute ("DROP INDEX STARS_C ON REVIEW");
