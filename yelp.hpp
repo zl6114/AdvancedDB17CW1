@@ -34,6 +34,7 @@ public:
 	#pragma db id column("ID") type("INT")
 	int id;
 
+	//14.4.7 default
 	#pragma db default(null) column("HOURS") type("VARCHAR(255)")
 	std::string hours;
 
