@@ -24,7 +24,7 @@ std::vector<std::string> findHours(odb::database& db, std::string username) {
 
 	transaction t(db.begin());
 	// t.tracer(odb::stderr_tracer);
-	std::cout << "The Answer for user " << username << "   is:"  << '\n';
+	//std::cout << "The Answer for user " << username << "   is:"  << '\n';
 	auto names = db.query <user> (odb::query<user>::name == username);
 	for (auto & User : names){
 		//find all user have the that username
@@ -34,7 +34,7 @@ std::vector<std::string> findHours(odb::database& db, std::string username) {
 			//get the business_id of each review
 			for(auto & Hours : (Business -> hours_)){
 				//find the hours
-					std::cout << (Hours.load() -> hours) << '\n';
+					//std::cout << (Hours.load() -> hours) << '\n';
 			 		result.push_back((Hours.load() -> hours));
 			}
 		}
@@ -51,8 +51,8 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 {
 
 	std::stringstream Query;
-	std::cout << '\n';
-	std::cout << "Here the query of counting the star is : " << '\n';
+	// std::cout << '\n';
+	// std::cout << "Here the query of counting the star is : " << '\n';
 		// Count the stars
 	Query << "SELECT REVIEW.STARS AS stars,\nCOUNT(REVIEW.STARS) AS count\n"
 				<< "FROM   REVIEW INNER JOIN BUSINESS "
@@ -79,7 +79,6 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 		temp.count = i -> count;
 		result.push_back(temp);
   }
-	std::cout << '\n';
 	t.commit();
 	return result;
 }
@@ -89,7 +88,7 @@ void createIndex(odb::database& db){
 	// --SQL Server 2012 and SQL Server 2014: you need to drop the nonclustered indexes
 	// --in order to create the columnstore index.
 
-	std::cout << "Creating a columnstore index to accelerate the query :" << '\n';
+	//std::cout << "Creating a columnstore index to accelerate the query :" << '\n';
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
 	db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
@@ -100,7 +99,7 @@ void createIndex(odb::database& db){
 
 void dropIndex(odb::database& db){
 
-	std::cout << "Now drop the columnstore index thats created : " << '\n';
+	//std::cout << "Now drop the columnstore index thats created : " << '\n';
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
 	db.execute ("DROP INDEX STARS_C ON REVIEW");
