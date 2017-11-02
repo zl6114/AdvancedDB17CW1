@@ -67,7 +67,7 @@ std::vector<StarCount> countStars(odb::database& db, float latMin, float latMax,
 	odb::result<StarCount> R;
 	std::vector<StarCount> result;
 	transaction t(db.begin());
-	t.tracer(odb::stderr_tracer);
+	//t.tracer(odb::stderr_tracer);
 	R = db.query<StarCount>(Query.str());
 	for (auto i (R.begin ()); i != R.end (); ++i)
   {
@@ -90,7 +90,7 @@ void createIndex(odb::database& db){
 
 	//std::cout << "Creating a columnstore index to accelerate the query :" << '\n';
 	transaction t(db.begin());
-	t.tracer(odb::stderr_tracer);
+	//t.tracer(odb::stderr_tracer);
 	db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
 	t.commit();
 
@@ -101,7 +101,7 @@ void dropIndex(odb::database& db){
 
 	//std::cout << "Now drop the columnstore index thats created : " << '\n';
 	transaction t(db.begin());
-	t.tracer(odb::stderr_tracer);
+	//t.tracer(odb::stderr_tracer);
 	db.execute ("DROP INDEX STARS_C ON REVIEW");
 	t.commit();
 
