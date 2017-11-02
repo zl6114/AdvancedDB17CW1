@@ -94,7 +94,7 @@ void createIndex(odb::database& db){
 
 // DROP INDEX SimpleTable.nc1_simple;
 // DROP INDEX SimpleTable.nc2_simple;
-	std::cout << "Now Creating a columnstore index to accelerate the query" << '\n';
+	std::cout << "Creating a columnstore index to accelerate the query :" << '\n';
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
 	db.execute ("CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)");
@@ -104,7 +104,7 @@ void createIndex(odb::database& db){
 
 void dropIndex(odb::database& db){
 	// Your implementation goes here:
-	std::cout << "Now drop the columnstore index thats created" << '\n';
+	std::cout << "Now drop the columnstore index thats created : " << '\n';
 	transaction t(db.begin());
 	t.tracer(odb::stderr_tracer);
 	db.execute ("DROP INDEX STARS_C ON REVIEW");

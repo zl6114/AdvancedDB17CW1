@@ -1,0 +1,279 @@
+The Answer for user kn   is:    
+Monday|0:00-0:00
+Tuesday|0:00-0:00
+Friday|0:00-0:00
+Wednesday|0:00-0:00
+Thursday|0:00-0:00
+Sunday|0:00-0:00
+Saturday|0:00-0:00
+Monday|8:00-2:00
+Tuesday|8:00-2:00
+Friday|8:00-2:00
+Wednesday|8:00-2:00
+Thursday|8:00-2:00
+Sunday|8:00-2:00
+Saturday|8:00-4:00
+Monday|11:00-23:00
+Tuesday|11:00-23:00
+Friday|11:00-1:00
+Wednesday|11:00-23:00
+Thursday|11:00-23:00
+Sunday|11:00-23:00
+Saturday|11:00-1:00
+Monday|18:00-23:00
+Tuesday|18:00-23:00
+Friday|18:00-23:00
+Wednesday|18:00-23:00
+Thursday|18:00-23:00
+Sunday|18:00-23:00
+Saturday|18:00-23:00
+Monday|17:30-23:00
+Tuesday|17:30-23:00
+Friday|17:30-23:00
+Wednesday|17:30-23:00
+Thursday|17:30-23:00
+Sunday|17:30-23:00
+Saturday|11:30-23:00
+Monday|9:00-2:00
+Tuesday|9:00-2:00
+Friday|9:00-2:00
+Wednesday|9:00-2:00
+Thursday|9:00-2:00
+Sunday|9:00-2:00
+Saturday|9:00-2:00
+Monday|0:00-0:00
+Tuesday|0:00-0:00
+Friday|0:00-0:00
+Wednesday|0:00-0:00
+Thursday|0:00-0:00
+Sunday|0:00-0:00
+Saturday|0:00-0:00
+Tuesday|17:00-0:00
+Friday|17:00-1:00
+Wednesday|17:00-0:00
+Thursday|17:00-0:00
+Sunday|17:00-0:00
+Saturday|17:00-1:00
+Tuesday|17:00-0:00
+Friday|17:00-1:00
+Wednesday|17:00-0:00
+Thursday|17:00-0:00
+Sunday|17:00-0:00
+Saturday|17:00-1:00
+
+findHours Test 1: passed
+The Answer for user neu   is:    
+Monday|6:00-20:00
+Tuesday|6:00-20:00
+Friday|6:00-20:00
+Wednesday|6:00-20:00
+Thursday|6:00-20:00
+Saturday|12:00-20:00
+Monday|9:00-19:00
+Tuesday|9:00-19:00
+Friday|9:00-19:00
+Wednesday|9:00-19:00
+Thursday|9:00-19:00
+Saturday|8:00-16:00
+Monday|11:30-23:00
+Tuesday|11:30-23:00
+Friday|11:30-2:00
+Wednesday|11:30-23:00
+Thursday|11:30-23:00
+Sunday|12:00-23:00
+Saturday|12:00-2:00
+
+findHours Test 2: passed
+The Answer for user Ewr   is:    
+Sunday|20:30-22:00
+Friday|20:30-22:00
+Saturday|20:30-22:00
+Thursday|20:30-22:00
+
+findHours Test 3: passed
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+countStars Test 1: passed
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 4
+AND    BUSINESS.LATITUDE <= 40
+AND    BUSINESS.LONGITUDE >= -90
+AND    BUSINESS.LONGITUDE <= -40
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+countStars Test 2: passed
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+Run number 0 time before indexing: 1654779
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+Run number 1 time before indexing: 1645336
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+Run number 2 time before indexing: 1697750
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+Run number 3 time before indexing: 1617793
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+Run number 4 time before indexing: 1586247
+Now Creating a columnstore index to accelerate the query
+CREATE COLUMNSTORE INDEX STARS_C ON REVIEW (STARS, BUSINESS_ID)
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+ Run number 0 time after indexing: 553915
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+ Run number 1 time after indexing: 581032
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+ Run number 2 time after indexing: 554696
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+ Run number 3 time after indexing: 559848
+
+Here the query of counting the star is : 
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
+
+ Run number 4 time after indexing: 567335
+
+Now drop the columnstore index thats created
+DROP INDEX STARS_C ON REVIEW
+

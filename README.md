@@ -11,7 +11,15 @@ after indexing
 
 Here is my query:
 
-Select sadasdas
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS 
+ORDER BY stars ASC
 
 
 According to the lecture, the row store index is similar to N-ary Storage Model (NSM), each attribute in a row is stored next to each other, however, in the columnar storage model, also known as The Decomposed Storage Model (DSM), the data is stored in a column based manner. NSM works best when solving OLTP (On-line Transaction Processing) problems which involve a large number of short on-line transactions, for example, INSERT, UPDATE and DELETE, and DSM, on the other hand, works better when dealing with OLAP (On-line Analytical Processing) queries which usually involves more complex format and aggregations. In this case, as you can see, the query we are dealing with is calculating the sum of stars within a region, which mainly is an aggregation process, thus after we created a column stored index for the specific attribute, in this case, Review.stars and Review.bussiness_id, the speed increased dramatically.
