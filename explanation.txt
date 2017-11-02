@@ -1,0 +1,42 @@
+Author: Zihan LIU CID: 00955065
+
+The performance difference before and after creating the columnstore index is shocking, I am getting 68 percents of performance improvement on average, here is my result according to the virtual machine:
+
+before indexing:
+Run number 0 time before indexing: 1693821
+Run number 1 time before indexing: 1645070
+Run number 2 time before indexing: 1664500
+Run number 3 time before indexing: 1594056
+Run number 4 time before indexing: 1691581
+
+after indexing:
+Run number 0 time after indexing: 554423
+Run number 1 time after indexing: 541472
+Run number 2 time after indexing: 572351
+Run number 3 time after indexing: 600462
+Run number 4 time after indexing: 535179
+
+Here is my query:
+
+SELECT REVIEW.STARS AS stars,
+COUNT(REVIEW.STARS) AS count
+FROM   REVIEW INNER JOIN BUSINESS ON REVIEW.business_id = Business.id
+WHERE  BUSINESS.LATITUDE >= 30
+AND    BUSINESS.LATITUDE <= 45.7
+AND    BUSINESS.LONGITUDE >= -100
+AND    BUSINESS.LONGITUDE <= -1
+GROUP BY REVIEW.STARS
+ORDER BY stars ASC
+
+
+According to the lecture, the row store index is similar to N-ary Storage Model (NSM), each attribute in a row is stored next to each other, however, in the columnar storage model, also known as The Decomposed Storage Model (DSM), the data is stored in a column based manner. NSM works best when solving OLTP (On-line Transaction Processing) problems which involve a large number of short on-line transactions, for example, INSERT, UPDATE and DELETE, and DSM, on the other hand, works better when dealing with OLAP (On-line Analytical Processing) queries which usually involves more complex format and aggregations. In this case, as you can see, the query we are dealing with is calculating the sum of stars within a region, which mainly is an aggregation process, thus after we created a column stored index for the specific attribute, in this case, Review.stars and Review.bussiness_id, the speed increased dramatically.
+
+The reasons for this efficiency change is mainly due to RAM locality and the latency of the disk, assuming the CPU have infinite computing power thus it is always waiting for Memory, the data is loaded into the ram and the cost of locating the information next to each other is much cheaper than locating information that further apart, in the column store index, all the information we need is stored next to each, thus caching data is much faster compares to the row stored manner. In disk, if we assume RAM is not large enough, and the all the data is stored in disk, different page on the disk needs to load into the ram before CPU can access them, disk is relatively slow hardware and the cost of swapping pages is very high compares to RAM and CPU speed, thus less swap need, higher the locality, faster the query will run, in this case, column stored have more information we need to be packed to one page of disk, which results in a much faster operation. But what if the CPU is not all perfect? CPU performance is also different with different tuple layouts, for DSM, usually as long as the tuple block fits into L2 cache, the sequential access is much faster than NSM, DSM also wins for random access inside L1 cache, which perfectly explains why the performance is better when we store the data in a column based manner. 
+
+
+Refrence:
+[1]: DSM vs. NSM: CPU performance tradeoffs in block-oriented query processing, by Marcin Zukowski, Niels Nes, Peter A. Boncz, 2008
+[2]: https://docs.microsoft.com/en-us/sql/t-sql/statements/create-columnstore-index-transact-sql
+[3]: Lecture 3: Data Storage and Lecture 7: Secondary Storage, Dr. Holger Pirk
+[4]: http://datawarehouse4u.info/OLTP-vs-OLAP.html    
+
